@@ -15,9 +15,11 @@ JOIN PARTICIPATED pa ON a.report_no = pa.report_no
 JOIN PERSON p ON pa.driver_id = p.driver_id
 WHERE p.name = 'mahesh';
 
--- SELECT COUNT(DISTINCT a.report_no) 
--- FROM ACCIDENT a ,person p,participated pa
--- WHERE p.name = 'mahesh' and a.report_no = pa.report_no and pa.driver_id = p.driver_id ;
+SELECT COUNT(DISTINCT a.report_no) 
+FROM ACCIDENT a
+INNER JOIN participated pa ON a.report_no = pa.report_no
+INNER JOIN person p ON pa.driver_id = p.driver_id
+WHERE p.name = 'mahesh';
 
 INSERT INTO ACCIDENT 
 VALUES (26, '2022-01-01', 'Seattle');
