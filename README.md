@@ -38,6 +38,7 @@ PARTICIPATED(driver id#:string, regno:string, report_ number: int,damage_amount:
 6. A view that shows models and year of cars that are involved in accident. 
 7. A trigger that prevents a driver from participating in more than 3 accidents in a given year.
 
+
 3. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are specified.
 Create tables for the following schema listed below by properly specifying the primary keys and foreign keys.
