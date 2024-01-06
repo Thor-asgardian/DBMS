@@ -18,7 +18,6 @@ Queries, View and Trigger
 7. Create a view that shows the names and colors of all the boats that have been reserved by a sailor with a specific rating.
 8. A trigger that prevents boats from being deleted If they have active reservations. 
 
-
 2. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are specified.
 Create tables for the following schema listed below by properly specifying the primary keys and foreign keys.
@@ -38,7 +37,6 @@ PARTICIPATED(driver id#:string, regno:string, report_ number: int,damage_amount:
 5. Update the damage amount for the car with license number “KA09MA1234” in the accident with report. 
 6. A view that shows models and year of cars that are involved in accident. 
 7. A trigger that prevents a driver from participating in more than 3 accidents in a given year.
-
 
 3. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are specified.
@@ -61,7 +59,6 @@ Warehouse (warehouse#:int, city: string)
 6. A trigger that updates order_amout based on quantity and unitprice of order_item
 7. Create a view to display orderID and shipment date of all orders shipped from a warehouse 5. 
 
-
 4. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are specified.
 Create tables for the following schema listed below by properly specifying the primary keys and foreign keys.
@@ -80,7 +77,6 @@ TEXT (book-ISBN: int, book-title: string, publisher: string,author: string)
 4. List the students who have scored maximum marks in ‘DBMS’ course. 
 5. Create a view to display all the courses opted by a student along with marks obtained.
 6. Create a trigger that prevents a student from enrolling in a course if the marks prerequisite is less than 40.
-
 
 5. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are specified.
