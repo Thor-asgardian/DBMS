@@ -17,19 +17,17 @@ HAVING COUNT(BOOK_ADOPTION.book_ISBN) >= 2
 ORDER BY TEXT.book_title;
 
  SELECT DISTINCT c.dept
-     FROM course c
-     WHERE c.dept IN
-     ( SELECT c.dept
-     FROM course c,book_adoption b,TEXT t
-     WHERE c.courseid=b.courseid
-     AND t.book_isbn=b.book_isbn
-     AND t.publisher='Wiley')
-     AND c.dept NOT IN
-     (SELECT c.dept
-     FROM course c,book_adoption b,TEXT t
-     WHERE c.courseid=b.courseid
-     AND t.book_isbn=b.book_isbn
-     AND t.publisher != 'Wiley');
+FROM course c
+JOIN book_adoption b ON c.courseid = b.courseid
+JOIN TEXT t ON t.book_isbn = b.book_isbn
+WHERE t.publisher = 'Wiley'
+AND c.dept NOT IN (
+    SELECT c.dept
+    FROM course c
+    JOIN book_adoption b ON c.courseid = b.courseid
+    JOIN TEXT t ON t.book_isbn = b.book_isbn
+    WHERE t.publisher != 'Wiley'
+);
      
      SELECT s.name,e.marks
      FROM student s,enroll e,course c
