@@ -14,11 +14,10 @@ JOIN Customer2 ON Places.custid = Customer2.custid
 JOIN Shipment ON Orders.orderno = Shipment.orderno
 WHERE Customer2.cname = 'Kumar';
 
-SELECT Customer2.cname, COUNT(Orders.orderno) AS '#ofOrders', AVG(Orders.order_amt) AS 'Avg_Order_Amt'
-FROM Customer2
-JOIN Places ON Customer2.custid = Places.custid
-JOIN Orders ON Places.orderno = Orders.orderno
-GROUP BY Customer2.cname;
+SELECT Cname, COUNT(OrderID) AS #ofOrders, AVG(OrderAmount) AS Avg_Order_Amt
+FROM Customers
+JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+GROUP BY Cname;
 
 SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM Orders
