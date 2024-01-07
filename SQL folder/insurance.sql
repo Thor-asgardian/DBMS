@@ -72,7 +72,7 @@ BEGIN
         FROM PARTICIPATED 
         WHERE driver_id = NEW.driver_id 
         AND YEAR(acc_date) = YEAR(CURRENT_DATE())
-    ) > 3 THEN
+    ) > 2 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Driver exceeded annual accident limit.';
     END IF;
 END;$$
