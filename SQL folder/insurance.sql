@@ -1,7 +1,5 @@
 CREATE DATABASE insurance;
 USE insurance;
-SHOW TABLES;
-SELECT * FROM owns;
 
 SELECT COUNT(DISTINCT p.driver_id) 
 FROM PERSON p 
@@ -27,7 +25,8 @@ INSERT INTO participated VALUES
 (5,"45321",26,3500);
 
 DELETE FROM CAR 
-WHERE regno IN (SELECT regno FROM OWNS o JOIN PERSON p ON o.driver_id = p.driver_id WHERE p.name = 'madesh' AND model = 'venue');
+WHERE regno IN 
+(SELECT regno FROM OWNS o JOIN PERSON p ON o.driver_id = p.driver_id WHERE p.name = 'madesh' AND model = 'venue');
 
 UPDATE PARTICIPATED
 SET damage_amt = 5000
@@ -68,9 +67,12 @@ CREATE TRIGGER check_accident_count
 BEFORE INSERT ON PARTICIPATED 
 FOR EACH ROW 
 BEGIN
-    DECLARE accident_count INT;
-    SET accident_count = (SELECT COUNT(*) FROM PARTICIPATED WHERE driver_id = NEW.driver_id AND YEAR(acc_date) = YEAR(CURRENT_DATE()));
-    IF accident_count >= 3 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Driver has exceeded the accident limit for this year.';
+    IF (
+        SELECT COUNT(*) 
+        FROM PARTICIPATED 
+        WHERE driver_id = NEW.driver_id 
+        AND YEAR(acc_date) = YEAR(CURRENT_DATE())
+    ) >= 3 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Driver exceeded annual accident limit.';
     END IF;
 END;$$
