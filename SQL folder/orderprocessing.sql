@@ -14,7 +14,8 @@ JOIN Customer2 ON Places.custid = Customer2.custid
 JOIN Shipment ON Orders.orderno = Shipment.orderno
 WHERE Customer2.cname = 'Kumar';
 
-SELECT Cname, COUNT(OrderID) AS #ofOrders, AVG(OrderAmount) AS Avg_Order_Amt
+SELECT Cname, COUNT(OrderID) AS noofOrders, AVG(OrderAmount) 
+    AS Avg_Order_Amt
 FROM Customers
 JOIN Orders ON Customers.CustomerID = Orders.CustomerID
 GROUP BY Cname;
